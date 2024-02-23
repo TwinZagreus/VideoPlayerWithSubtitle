@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui openglwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -9,14 +9,23 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    AssRender/assdata.cpp \
+    AssRender/assrender.cpp \
+    ffmpegrender.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    temp.cpp
 
 HEADERS += \
-    mainwindow.h
+    AssRender/assdata.h \
+    AssRender/assrender.h \
+    ffmpegrender.h \
+    mainwindow.h \
+    temp.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    temp.ui
 
 INCLUDEPATH += $$PWD/include/libass
 INCLUDEPATH += $$PWD/include/ffmpeg

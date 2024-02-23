@@ -2183,6 +2183,11 @@ int av_find_best_stream(AVFormatContext *ic,
  * omit invalid data between valid frames so as to give the decoder the maximum
  * information possible for decoding.
  *
+ *返回流的下一帧。
+ *此函数返回存储在文件中的内容，但不进行验证
+ *对于解码器来说有有效的帧。它将把存储在文件中的内容分割成帧，并为每次调用返回一个帧。
+ *它不会省略有效帧之间的无效数据，以便为解码器提供可能用于解码的最大信息。。
+ *
  * On success, the returned packet is reference-counted (pkt->buf is set) and
  * valid indefinitely. The packet must be freed with av_packet_unref() when
  * it is no longer needed. For video, the packet contains exactly one frame.
@@ -2190,11 +2195,21 @@ int av_find_best_stream(AVFormatContext *ic,
  * a known fixed size (e.g. PCM or ADPCM data). If the audio frames have
  * a variable size (e.g. MPEG audio), then it contains one frame.
  *
+ *如果成功，返回的数据包将被引用计数(pkt->但已设置)并无限期有效。
+ *当不再需要该数据包时，必须使用av_packet_unref()释放该数据包。
+ *对于视频，数据包只包含一帧。
+ *对于音频，如果每帧有一个已知的固定大小(例如PCM或ADPCM数据)，它包含一个整数帧数。
+ *如果音频帧具有可变大小(例如MPEG音频)，则它包含一个帧。
+ *
  * pkt->pts, pkt->dts and pkt->duration are always set to correct
  * values in AVStream.time_base units (and guessed if the format cannot
  * provide them). pkt->pts can be AV_NOPTS_VALUE if the video format
  * has B-frames, so it is better to rely on pkt->dts if you do not
  * decompress the payload.
+ *
+ *pkt->pts, pkt->dts和pkt->duration在AVStream中总是设置为正确的值。
+ *Time_base单位(并猜测格式是否不能提供它们)。
+ *如果视频格式有b帧，pkt->pts可以是AV_NOPTS_VALUE，所以如果不解压缩有效载荷，最好依赖pkt->dts。
  *
  * @return 0 if OK, < 0 on error or end of file. On error, pkt will be blank
  *         (as if it came from av_packet_alloc()).
