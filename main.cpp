@@ -9,7 +9,7 @@ extern "C" {
 }
 
 #include "AssRender/assrender.h"
-
+#include "UI/mainuserinterface.h"
 
 
 
@@ -110,17 +110,21 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    AssRender test("D:/000/stantass.ass");
-    test.setSize(600,600);
-    ASS_Image *img = test.renderFrameInMoment(6000);
+//    AssRender test("D:/000/stantass.ass");
+//    test.setSize(600,600);
+//    ASS_Image *img = test.renderFrameInMoment(6000);
 
-    int n = 1;
-    while(img){
-        QString fileName = "C:/Users/TTZ/Pictures/ass-test-"+QString::number(n)+".png";
-        saveAssImageAsPng(img, fileName);
-        img = img->next;
-        n++;
-    }
+//    int n = 1;
+//    while(img){
+//        QString fileName = "C:/Users/TTZ/Pictures/ass-test-"+QString::number(n)+".png";
+//        saveAssImageAsPng(img, fileName);
+//        img = img->next;
+//        n++;
+//    }
+
+
+    MainUserInterface mui;
+    mui.show();
 
     return a.exec();
 }

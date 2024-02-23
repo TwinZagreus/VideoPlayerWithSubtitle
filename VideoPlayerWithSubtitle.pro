@@ -1,4 +1,5 @@
 QT       += core gui openglwidgets
+QT       += multimedia  multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,6 +14,7 @@ SOURCES += \
     AssRender/assrender.cpp \
     ffmpegrender.cpp \
     main.cpp \
+    UI/mainuserinterface.cpp \
     mainwindow.cpp \
     temp.cpp
 
@@ -20,10 +22,12 @@ HEADERS += \
     AssRender/assdata.h \
     AssRender/assrender.h \
     ffmpegrender.h \
+    UI/mainuserinterface.h \
     mainwindow.h \
     temp.h
 
 FORMS += \
+    UI/mainuserinterface.ui \
     mainwindow.ui \
     temp.ui
 
