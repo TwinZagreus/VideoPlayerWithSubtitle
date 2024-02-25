@@ -12,6 +12,7 @@ CONFIG += c++17
 SOURCES += \
     AssRender/assdata.cpp \
     AssRender/assrender.cpp \
+    UI/multipixmaplabel.cpp \
     ffmpegrender.cpp \
     main.cpp \
     UI/mainuserinterface.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 HEADERS += \
     AssRender/assdata.h \
     AssRender/assrender.h \
+    UI/multipixmaplabel.h \
     ffmpegrender.h \
     UI/mainuserinterface.h \
     mainwindow.h \

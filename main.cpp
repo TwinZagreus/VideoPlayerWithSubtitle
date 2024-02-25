@@ -102,6 +102,9 @@ void saveImageAsPng(const QImage &image, const QString &filename) {
 // 示例函数，将 ASS_Image 结构保存为本地 PNG 文件
 void saveAssImageAsPng(const ASS_Image *image, const QString &filename) {
     QImage qImage = assImageToQImageSecond(image);
+    QLabel * aa =  new QLabel ();
+    aa->setPixmap(QPixmap::fromImage(qImage));
+    aa->show();
     saveImageAsPng(qImage, filename);
 }
 

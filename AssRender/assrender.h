@@ -3,12 +3,21 @@
 
 #include <QScopedPointer>
 #include <QObject>
+#include <QImage>
+
 
 extern "C" {
 #include <ass/ass.h>
 }
 
 #include "assdata.h"
+
+
+struct AssRenderLabel {
+    QImage _labelImage;     // 字幕label
+    int _x;          // 位置x
+    int _y;          // 位置y
+};
 
 class AssRender: public QObject
 {
@@ -18,6 +27,9 @@ public:
 
     void setSize (int frame_w, int frame_h);
     ASS_Image * renderFrameInMoment(long long now = 0);
+
+    AssRenderLabel assImageToQImage(const ASS_Image *image);
+
 
     const char* subtitle = "D:\\train\\c++\\VideoPlayerWithSubtitle\\subtitle.ass";
 
