@@ -21,10 +21,12 @@ MainUserInterface::MainUserInterface(QWidget *parent) :
     // 创建一个视频播放器
     _player = new QMediaPlayer(this);
     _videoWidget = new QVideoWidget(this);
+    _audioOutPut = new QAudioOutput(this);
 
     layout->addWidget(_videoWidget);
     // 设置视频输出到视频小部件
     _player->setVideoOutput(_videoWidget);
+    _player->setAudioOutput(_audioOutPut);
     // 加载并播放视频文件
     QString filePath = "D:/000/h.mp4";
     _player->setSource(QUrl::fromLocalFile(filePath));
@@ -70,7 +72,13 @@ void MainUserInterface::createOverlayDialog()
     _overlayLabel->setStyleSheet("background-color: rgba(255, 255, 255, 100);"); // 设置半透明背景
     _overlayLabel->setFixedSize(600,600);
 
-    AssRender test("D:/000/stantass.ass");
+
+    QString assFile = "C:/000/stantass.ass";
+    char *aaa = new char[assFile.toStdString().length() + 1];
+    std::strcpy(aaa, assFile.toStdString().c_str());
+
+
+    AssRender test(aaa);
     test.setSize(600,600);
     ASS_Image *img = test.renderFrameInMoment(6000);
 

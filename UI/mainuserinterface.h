@@ -5,7 +5,7 @@
 #include <QVBoxLayout>
 #include <QMediaPlayer>
 #include <QVideoWidget>
-
+#include <QAudioOutput>
 #include "multipixmaplabel.h"
 #include "AssRender/assrender.h"
 
@@ -33,6 +33,7 @@ private:
 
     QMediaPlayer * _player = nullptr;
     QVideoWidget * _videoWidget = nullptr;
+    QAudioOutput * _audioOutPut=nullptr;
 //    AssRender _assRender;
 protected:
     void showEvent(QShowEvent *event) override ;
